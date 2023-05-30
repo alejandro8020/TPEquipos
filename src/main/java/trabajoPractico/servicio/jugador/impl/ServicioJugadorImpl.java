@@ -6,6 +6,7 @@ package trabajoPractico.servicio.jugador.impl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import trabajoPractico.domain.Equipo;
 import trabajoPractico.domain.Jugador;
@@ -69,12 +70,40 @@ public class ServicioJugadorImpl implements ServicioJugador {
     
     @Override
     public  Jugador MostrarJugadoresCompletos(List<Jugador> jugadores){
+        List<Jugador> productosLinked = new LinkedList<>();
+        productosLinked =jugadores;
+        Jugador aux=null;
+        Jugador aux2=null;
         System.out.println("-----------------------JUGADORES---------------------");
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n","NOMBRE","APELLIDO","ALTURA","POSICION","ES CAPITAN?","NUMERO DE CAMISETA");
+        for (int i=0; i<jugadores.size();i++){
+            for (int j=i+1; j<jugadores.size();j++){
+                if(jugadores.get(j).getNombre().compareToIgnoreCase(jugadores.get(i).getNombre())<0){
+                    aux = jugadores.get(j);
+                    aux2 = jugadores.get(i);
+                    jugadores.remove(j);
+                    jugadores.add(j, aux2);
+                    jugadores.remove(i);
+                    jugadores.add(i, aux);
+                    
+                }
+            }
+        }
+        /*Collections.sort(productosLinked,new Sortbyroll());
+         public class Sortbyroll implements Comparator<Jugador>{
+                public int compare(Jugador a, Jugador b)
+               {
+                   return a.getNombre().compareToIgnoreCase(b.getNombre());
+               }
+
+            }
+        
+        */
+        
         for (Jugador listaJugadores:jugadores) {
-               String aux = listaJugadores.isEsCapitan() ? "SI" : "NO";
+               String var = listaJugadores.isEsCapitan() ? "SI" : "NO";
                System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n",listaJugadores.getNombre(),listaJugadores.getApellido(),listaJugadores.getAltura(),
-                        listaJugadores.getPosicion(),aux,listaJugadores.getNumeroCamiseta());
+                        listaJugadores.getPosicion(),var,listaJugadores.getNumeroCamiseta());
         }        
         return null;
     }
