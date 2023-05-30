@@ -41,6 +41,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
            break;
          case "4":
            jugadorNuevo.setPosicion("DELANTERO");
+           break;
          default:
            System.out.println("DIGITO UNA OPCION NO VALIDA, ESCRIBA LA POSICION DIRECTAMENTE ");
            jugadorNuevo.setPosicion(InputService.scanner.nextLine());
