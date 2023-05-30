@@ -17,6 +17,8 @@ public interface  ServicioEquipo {
     Equipo MostrarEquipoCompletos(List<Equipo> equipos);
     Equipo BuscarEquipo(List<Equipo> equipoList);
     Equipo BuscarEquipoCompleto(List<Equipo> equipoList);
+    List<Equipo> EliminarEquipoCompleto(List<Equipo> equipoList);
+    Equipo crearEquipoConArchivo();
     
 }
 

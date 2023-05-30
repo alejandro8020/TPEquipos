@@ -10,6 +10,8 @@ import java.util.List;
 import trabajoPractico.domain.Equipo;
 import trabajoPractico.domain.Jugador;
 import trabajoPractico.servicio.entrada.console.impl.InputService;
+import trabajoPractico.servicio.entrada.file.InputFileService;
+import trabajoPractico.servicio.entrada.file.impl.InputFileServiceImpl;
 import trabajoPractico.servicio.equipo.ServicioEquipo;
 import trabajoPractico.servicio.jugador.ServicioJugador;
 import trabajoPractico.servicio.jugador.impl.ServicioJugadorImpl;
@@ -24,6 +26,7 @@ import trabajoPractico.servicio.tecnico.impl.ServicioTecnicoImpl;
 public class ServicioEquipoImpl implements ServicioEquipo{
     private final ServicioJugador servicioJugador = new ServicioJugadorImpl();
     private final ServicioTecnico servicioTecnico = new ServicioTecnicoImpl();
+    private static final InputFileService inputFileService = new InputFileServiceImpl();
     
     @Override
     public Equipo crearEquipo() {
@@ -108,6 +111,34 @@ public class ServicioEquipoImpl implements ServicioEquipo{
             }
         }
         return null;
+    }
+    
+    @Override
+    public  List<Equipo> EliminarEquipoCompleto(List<Equipo> equipoList){
+         List<Equipo> auxiliar = new ArrayList<>();   
+         System.out.println("INGRESE EL NOMBRE DEL EQUIPO A ELIMINAR : ");
+         String busqueda = InputService.scanner.nextLine();
+        for (Equipo equipos:equipoList) {
+            if (equipos.getNombreEquipo().equals(busqueda)) {
+                equipoList.remove(equipos);
+            }
+        }
+        return equipoList;
+    }
+    
+    @Override
+    public Equipo crearEquipoConArchivo() {        
+        Equipo equipoNuevo = new Equipo();
+        System.out.println("INGRESE EL NOMBRE DEL EQUIPO : ");
+        equipoNuevo.setNombreEquipo(InputService.scanner.nextLine());
+        equipoNuevo.setFechaCreacion(LocalDateTime.now());
+        String rutaArchivo = "src/main/java/trabajoPractico/resources/jugadores_entrada.txt";
+        //ServicioJugadorImpl;
+        List<Jugador>listaJugadores = inputFileService.cargarJugadoresPorArchivo(rutaArchivo,equipoNuevo);
+        equipoNuevo.setEquipo(listaJugadores);
+        equipoNuevo.setEntrenador(servicioTecnico.InsertarTecnico());
+
+      return equipoNuevo;  
     }
     
     

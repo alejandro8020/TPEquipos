@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class TPFinal {
 
     public static void main(String[] args) {
-        List<Equipo> equipoList = new ArrayList<>();        
+        List<Equipo> equipoList = new LinkedList<>();        
         ServicioEquipo servicioEquipo = new ServicioEquipoImpl();
         ServicioJugador servicioJugador = new ServicioJugadorImpl();
         
@@ -38,7 +38,9 @@ public class TPFinal {
         System.out.println("3. BUSCAR JUGADOR");
         System.out.println("4. BUSCAR EQUIPO RESUMIDO");
         System.out.println("5. BUSCAR EQUIPO COMPLETO");
-        System.out.println("6. SALIR");
+        System.out.println("6. ELIMINAR EQUIPO COMPLETO");
+        System.out.println("7. CREAR EQUIPO CON CARGA DE JUGADORES POR ARCHIVO");
+        System.out.println("8. SALIR");
         Scanner lectura = InputService.getScanner();
         String var = lectura.nextLine();
         
@@ -71,6 +73,13 @@ public class TPFinal {
         }
         if ("5".equals(var)){            
             servicioEquipo.BuscarEquipoCompleto(equipoList);
+        }
+        if ("6".equals(var)){            
+            servicioEquipo.EliminarEquipoCompleto(equipoList);
+            System.out.println("-------------EQUIPO ELIMINADO SATISFACTORIAMENTE-------------");
+        }
+        if ("7".equals(var)){            
+            equipoList.add(servicioEquipo.crearEquipoConArchivo());
         }
         //Lista de productos mas caros
         

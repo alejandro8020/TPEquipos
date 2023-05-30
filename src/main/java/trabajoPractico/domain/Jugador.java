@@ -22,6 +22,18 @@ public class Jugador extends Persona {
     private List<Equipo> equipo = new ArrayList<>();
     private String nomEquipo;
 
+    public Jugador(String nombre, String apellido, double altura, String posicion, int cantidadGoles, int cantidadPartidos, boolean esCapitan, int numeroCamiseta, String nomEquipo) {
+        this.altura = altura;
+        this.posicion = posicion;
+        this.cantidadGoles = cantidadGoles;
+        this.cantidadPartidos = cantidadPartidos;
+        this.esCapitan = esCapitan;
+        this.numeroCamiseta = numeroCamiseta;
+        this.nomEquipo = nomEquipo;
+        super.nombre = nombre;
+        super.apellido = apellido;
+    }
+    public Jugador(){};
     /**
      * @return the altura
      */
