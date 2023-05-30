@@ -15,6 +15,8 @@ import trabajoPractico.servicio.entrada.file.impl.InputFileServiceImpl;
 import trabajoPractico.servicio.equipo.ServicioEquipo;
 import trabajoPractico.servicio.jugador.ServicioJugador;
 import trabajoPractico.servicio.jugador.impl.ServicioJugadorImpl;
+import trabajoPractico.servicio.salidaArchivos.OutPutFileService;
+import trabajoPractico.servicio.salidaArchivos.impl.OutPutFileServiceImpl;
 import trabajoPractico.servicio.tecnico.ServicioTecnico;
 import trabajoPractico.servicio.tecnico.impl.ServicioTecnicoImpl;
 
@@ -24,9 +26,15 @@ import trabajoPractico.servicio.tecnico.impl.ServicioTecnicoImpl;
  * @author Alejandro
  */
 public class ServicioEquipoImpl implements ServicioEquipo{
+    
+    String rutaArchivo = "src/main/java/trabajoPractico/resources/jugadores_entrada.txt";
+    String rutaSalida = "src/main/java/trabajoPractico/resources/jugadores_Salida.csv";
     private final ServicioJugador servicioJugador = new ServicioJugadorImpl();
     private final ServicioTecnico servicioTecnico = new ServicioTecnicoImpl();
     private static final InputFileService inputFileService = new InputFileServiceImpl();
+    private static final OutPutFileService outPutFileService = new OutPutFileServiceImpl();
+
+    
     
     @Override
     public Equipo crearEquipo() {
@@ -66,11 +74,16 @@ public class ServicioEquipoImpl implements ServicioEquipo{
     @Override
     public  Equipo MostrarEquipoCompletos(List<Equipo> equipos){
         for (Equipo listaEquipos:equipos) {
-            System.out.println("-----------------------EQUIPO---------------------");
+            System.out.println("------------------------------------EQUIPO----------------------------------");
             System.out.printf("%-20s%-20s%n", "NOMBRE DEL EQUIPO", "FECHA DE CREACIÓN");
             System.out.printf("%-20s%-20s%n", listaEquipos.getNombreEquipo(), listaEquipos.getFechaCreacion());
             servicioTecnico.MostrarTecnico(listaEquipos.getEntrenador());
             servicioJugador.MostrarJugadoresCompletos(listaEquipos.getEquipo());
+            System.out.println("DESEA EXPORTAR LISTA DE JUGADORES : SI=S NO=N");
+            String aux = InputService.scanner.nextLine();
+            if("S".equals(aux)){
+            outPutFileService.exportJugadores(listaEquipos.getEquipo(),rutaSalida);
+            }
         }
         return null;
     }
@@ -132,7 +145,6 @@ public class ServicioEquipoImpl implements ServicioEquipo{
         System.out.println("INGRESE EL NOMBRE DEL EQUIPO : ");
         equipoNuevo.setNombreEquipo(InputService.scanner.nextLine());
         equipoNuevo.setFechaCreacion(LocalDateTime.now());
-        String rutaArchivo = "src/main/java/trabajoPractico/resources/jugadores_entrada.txt";
         //ServicioJugadorImpl;
         List<Jugador>listaJugadores = inputFileService.cargarJugadoresPorArchivo(rutaArchivo,equipoNuevo);
         equipoNuevo.setEquipo(listaJugadores);

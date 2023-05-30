@@ -53,12 +53,12 @@ public class ServicioJugadorImpl implements ServicioJugador {
     @Override
     public  Jugador MostrarJugadoresCompletos(List<Jugador> jugadores){
         System.out.println("-----------------------JUGADORES---------------------");
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n","NOMBRE","APELLIDO","ALTURA","POSICION","eS CAPITAN?","NUMERO DE CAMISETA");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n","NOMBRE","APELLIDO","ALTURA","POSICION","ES CAPITAN?","NUMERO DE CAMISETA");
         for (Jugador listaJugadores:jugadores) {
                String aux = listaJugadores.isEsCapitan() ? "SI" : "NO";
                System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%n",listaJugadores.getNombre(),listaJugadores.getApellido(),listaJugadores.getAltura(),
                         listaJugadores.getPosicion(),aux,listaJugadores.getNumeroCamiseta());
-        }
+        }        
         return null;
     }
     
@@ -80,8 +80,9 @@ public class ServicioJugadorImpl implements ServicioJugador {
         System.out.println("-----------------------JUGADORES ENCONTRADOS ---------------------");
         System.out.printf("%-20s%-20s%-20s%-20s%-20s%n","NOMBRE","APELLIDO","POSICION","ES CAPITAN?","NOMBRE DEL EQUIPO");
         for (Jugador listaJugadores:jugadores) {
-                System.out.printf("%-20s%-20s%-20s%-20s%-20s%n",listaJugadores.getNombre(),listaJugadores.getApellido(),
-                        listaJugadores.getPosicion(),listaJugadores.isEsCapitan(),listaJugadores.getNomEquipo());
+            String aux = listaJugadores.isEsCapitan() ? "SI" : "NO";
+            System.out.printf("%-20s%-20s%-20s%-20s%-20s%n",listaJugadores.getNombre(),listaJugadores.getApellido(),
+                listaJugadores.getPosicion(),aux,listaJugadores.getNomEquipo());
         }
         return null;
     }
