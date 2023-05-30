@@ -81,7 +81,9 @@ public class TPFinal {
         if ("7".equals(var)){            
             equipoList.add(servicioEquipo.crearEquipoConArchivo());
         }
-        //Lista de productos mas caros
+        if ("8".equals(var)){            
+            System.exit(0);
+        }//Lista de productos mas caros
         
     }
     }

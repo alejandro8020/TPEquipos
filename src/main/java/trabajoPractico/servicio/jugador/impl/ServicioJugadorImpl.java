@@ -26,8 +26,25 @@ public class ServicioJugadorImpl implements ServicioJugador {
          jugadorNuevo.setApellido(InputService.scanner.nextLine());
          System.out.println("INGRESE EL ALTURA DEL JUGADOR : ");
          jugadorNuevo.setAltura(Double.parseDouble(InputService.scanner.nextLine()));
-         System.out.println("INGRESE LA POSICION DEL JUGADOR : ");
-         jugadorNuevo.setPosicion(InputService.scanner.nextLine());
+         System.out.println("INGRESE LA POSICION DEL JUGADOR : 1.ARQUERO 2.DEFENSOR 3.MEDIOCAMPISTA 4.DELANTERO");
+         String var =InputService.scanner.nextLine();
+         switch(var) {
+         case "1":
+           jugadorNuevo.setPosicion("ARQUERO");
+           break;
+         case "2":
+           jugadorNuevo.setPosicion("DEFENSOR");
+           break;
+         case "3":
+           jugadorNuevo.setPosicion("MEDIOCAMPISTA");
+           break;
+         case "4":
+           jugadorNuevo.setPosicion("DELANTERO");
+         default:
+           System.out.println("DIGITO UNA OPCION NO VALIDA, ESCRIBA LA POSICION DIRECTAMENTE ");
+           jugadorNuevo.setPosicion(InputService.scanner.nextLine());
+        }
+         
          jugadorNuevo.setCantidadGoles(0);
          jugadorNuevo.setCantidadPartidos(0);
          while (true) {
