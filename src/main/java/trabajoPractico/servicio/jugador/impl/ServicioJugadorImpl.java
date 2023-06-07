@@ -19,7 +19,7 @@ import trabajoPractico.servicio.jugador.ServicioJugador;
  */
 public class ServicioJugadorImpl implements ServicioJugador {
      @Override
-    public Jugador InsertarJugador(String equipo){
+    public Jugador insertarJugador(String equipo){
          Jugador jugadorNuevo = new Jugador();
          System.out.println("INGRESE EL NOMBRE DEL JUGADOR : ");
          jugadorNuevo.setNombre(InputService.scanner.nextLine());
@@ -70,7 +70,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
     
     
     @Override
-    public  Jugador MostrarJugadoresCompletos(List<Jugador> jugadores){
+    public  Jugador mostrarJugadoresCompletos(List<Jugador> jugadores){
         List<Jugador> productosLinked = new LinkedList<>();
         productosLinked =jugadores;
         Jugador aux=null;
@@ -110,7 +110,7 @@ public class ServicioJugadorImpl implements ServicioJugador {
     }
     
      @Override
-     public  Jugador BuscarJugadores(List<Equipo> equipoList){
+     public  Jugador buscarJugadores(List<Equipo> equipoList){
          List<Jugador> auxiliar = new ArrayList<>();
          List<Jugador> jugadores = new ArrayList<>();         
          System.out.println("INGRESE EL NOMBRE DEL JUGADOR A BUSCAR : ");

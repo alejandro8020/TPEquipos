@@ -19,7 +19,7 @@ public class Jugador extends Persona {
     private int cantidadPartidos;
     private boolean esCapitan;
     private int numeroCamiseta;
-    private List<Equipo> equipo = new ArrayList<>();
+    //private List<Equipo> equipo = new ArrayList<>();
     private String nomEquipo;
 
     public Jugador(String nombre, String apellido, double altura, String posicion, int cantidadGoles, int cantidadPartidos, boolean esCapitan, int numeroCamiseta, String nomEquipo) {
@@ -134,7 +134,7 @@ public class Jugador extends Persona {
 
     @Override
     public String toString() {
-        return "Jugador{" +  " Nombre=" + super.nombre + " Apellido=" + super.apellido + "altura=" + altura + ", posicion=" + posicion + ", cantidadGoles=" + cantidadGoles + ", cantidadPartidos=" + cantidadPartidos + ", es Capitan=" + esCapitan + ", numeroCamiseta=" + numeroCamiseta + ", equipo=" + equipo + ", nomEquipo=" + nomEquipo + '}';
+        return "Jugador{" +  " Nombre=" + super.nombre + " Apellido=" + super.apellido + "altura=" + altura + ", posicion=" + posicion + ", cantidadGoles=" + cantidadGoles + ", cantidadPartidos=" + cantidadPartidos + ", es Capitan=" + esCapitan + ", numeroCamiseta=" + numeroCamiseta + ", nomEquipo=" + nomEquipo + '}';
     }
 
 }

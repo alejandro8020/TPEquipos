@@ -53,7 +53,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
         Equipo equipoNuevoConJugadores = new Equipo();
         equipoNuevoConJugadores=crearEquipo();
         while(true){
-            equipoNuevoConJugadores.getEquipo().add(servicioJugador.InsertarJugador(equipoNuevoConJugadores.getNombreEquipo()));
+            equipoNuevoConJugadores.getEquipo().add(servicioJugador.insertarJugador(equipoNuevoConJugadores.getNombreEquipo()));
             System.out.println("¿DESEA INGRESAR OTRO JUGADOR? SI=S NO=N ");
             String otroJugador=(InputService.scanner.nextLine());
             if ("N".equals(otroJugador)){
@@ -66,19 +66,19 @@ public class ServicioEquipoImpl implements ServicioEquipo{
             }        
         } 
         //equipoNuevoConJugadores.getEntrenador().add(servicioTecnico.InsertarTecnico()); 
-        equipoNuevoConJugadores.setEntrenador(servicioTecnico.InsertarTecnico());
+        equipoNuevoConJugadores.setEntrenador(servicioTecnico.insertarTecnico());
     
     return equipoNuevoConJugadores;  
     }
     
     @Override
-    public  Equipo MostrarEquipoCompletos(List<Equipo> equipos){
+    public  Equipo mostrarEquipoCompletos(List<Equipo> equipos){
         for (Equipo listaEquipos:equipos) {
             System.out.println("------------------------------------EQUIPO----------------------------------");
             System.out.printf("%-20s%-20s%n", "NOMBRE DEL EQUIPO", "FECHA DE CREACIÓN");
             System.out.printf("%-20s%-20s%n", listaEquipos.getNombreEquipo(), listaEquipos.getFechaCreacion());
-            servicioTecnico.MostrarTecnico(listaEquipos.getEntrenador());
-            servicioJugador.MostrarJugadoresCompletos(listaEquipos.getEquipo());
+            servicioTecnico.mostrarTecnico(listaEquipos.getEntrenador());
+            servicioJugador.mostrarJugadoresCompletos(listaEquipos.getEquipo());
             System.out.println("DESEA EXPORTAR LISTA DE JUGADORES : SI=S NO=N");
             String aux = InputService.scanner.nextLine();
             if("S".equals(aux)){
@@ -88,7 +88,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
         return null;
     }
     
-    public  Equipo BuscarEquipo(List<Equipo> equipoList){
+    public  Equipo buscarEquipo(List<Equipo> equipoList){
          Equipo auxiliar = new Equipo();  
          Jugador capitan = new Jugador();
          List<Jugador> jugadores = new ArrayList<>();  
@@ -113,21 +113,21 @@ public class ServicioEquipoImpl implements ServicioEquipo{
     }
     
     @Override
-    public  Equipo BuscarEquipoCompleto(List<Equipo> equipoList){
+    public  Equipo buscarEquipoCompleto(List<Equipo> equipoList){
          List<Equipo> auxiliar = new ArrayList<>();   
          System.out.println("INGRESE EL NOMBRE DEL EQUIPO A BUSCAR : ");
          String busqueda = InputService.scanner.nextLine();
         for (Equipo equipos:equipoList) {
             if (equipos.getNombreEquipo().equals(busqueda)) {
                 auxiliar.add(equipos);
-                MostrarEquipoCompletos(auxiliar);                
+                mostrarEquipoCompletos(auxiliar);                
             }
         }
         return null;
     }
     
     @Override
-    public  List<Equipo> EliminarEquipoCompleto(List<Equipo> equipoList){
+    public  List<Equipo> eliminarEquipoCompleto(List<Equipo> equipoList){
          List<Equipo> auxiliar = new ArrayList<>();   
          System.out.println("INGRESE EL NOMBRE DEL EQUIPO A ELIMINAR : ");
          String busqueda = InputService.scanner.nextLine();
@@ -148,7 +148,7 @@ public class ServicioEquipoImpl implements ServicioEquipo{
         //ServicioJugadorImpl;
         List<Jugador>listaJugadores = inputFileService.cargarJugadoresPorArchivo(rutaArchivo,equipoNuevo);
         equipoNuevo.setEquipo(listaJugadores);
-        equipoNuevo.setEntrenador(servicioTecnico.InsertarTecnico());
+        equipoNuevo.setEntrenador(servicioTecnico.insertarTecnico());
 
       return equipoNuevo;  
     }

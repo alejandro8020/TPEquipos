@@ -50,7 +50,7 @@ public class InputFileServiceImpl implements InputFileService {
             throw new RuntimeException(e);
 
         }catch (NullPointerException n){
-            System.out.println("Hoal soy un error");
+            System.out.println("ERROR AL LEER EL ARCHIVO");
             throw new RuntimeException(n);
         }
         return jugadores;

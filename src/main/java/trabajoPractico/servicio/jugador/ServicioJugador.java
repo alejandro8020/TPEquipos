@@ -13,7 +13,7 @@ import trabajoPractico.domain.Jugador;
  * @author Alejandro
  */
 public interface ServicioJugador {
-    Jugador InsertarJugador(String equipo);
-    Jugador MostrarJugadoresCompletos(List<Jugador> jugadores);
-    Jugador BuscarJugadores(List<Equipo> equipoList);
+    Jugador insertarJugador(String equipo);
+    Jugador mostrarJugadoresCompletos(List<Jugador> jugadores);
+    Jugador buscarJugadores(List<Equipo> equipoList);
 }

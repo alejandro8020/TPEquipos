@@ -63,19 +63,19 @@ public class TPFinal {
         }
         
         if ("2".equals(var)){            
-            servicioEquipo.MostrarEquipoCompletos(equipoList);                
+            servicioEquipo.mostrarEquipoCompletos(equipoList);                
         }
         if ("3".equals(var)){            
-            servicioJugador.BuscarJugadores(equipoList);
+            servicioJugador.buscarJugadores(equipoList);
         }
         if ("4".equals(var)){            
-            servicioEquipo.BuscarEquipo(equipoList);
+            servicioEquipo.buscarEquipo(equipoList);
         }
         if ("5".equals(var)){            
-            servicioEquipo.BuscarEquipoCompleto(equipoList);
+            servicioEquipo.buscarEquipoCompleto(equipoList);
         }
         if ("6".equals(var)){            
-            servicioEquipo.EliminarEquipoCompleto(equipoList);
+            servicioEquipo.eliminarEquipoCompleto(equipoList);
             System.out.println("-------------EQUIPO ELIMINADO SATISFACTORIAMENTE-------------");
         }
         if ("7".equals(var)){            

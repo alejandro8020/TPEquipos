@@ -12,6 +12,6 @@ import trabajoPractico.domain.Tecnico;
  * @author Alejandro
  */
 public interface ServicioTecnico {
-    Tecnico InsertarTecnico();
-    Tecnico MostrarTecnico(Tecnico tecnico);
+    Tecnico insertarTecnico();
+    Tecnico mostrarTecnico(Tecnico tecnico);
 }

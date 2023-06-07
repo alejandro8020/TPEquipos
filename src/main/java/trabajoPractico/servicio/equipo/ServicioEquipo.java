@@ -14,10 +14,10 @@ import trabajoPractico.domain.Equipo;
 public interface  ServicioEquipo {
     Equipo crearEquipo();
     Equipo crearEquipoConintegrantes();
-    Equipo MostrarEquipoCompletos(List<Equipo> equipos);
-    Equipo BuscarEquipo(List<Equipo> equipoList);
-    Equipo BuscarEquipoCompleto(List<Equipo> equipoList);
-    List<Equipo> EliminarEquipoCompleto(List<Equipo> equipoList);
+    Equipo mostrarEquipoCompletos(List<Equipo> equipos);
+    Equipo buscarEquipo(List<Equipo> equipoList);
+    Equipo buscarEquipoCompleto(List<Equipo> equipoList);
+    List<Equipo> eliminarEquipoCompleto(List<Equipo> equipoList);
     Equipo crearEquipoConArchivo();
     
 }
